@@ -51,6 +51,19 @@ class FibonacciTable {
     // cache.containsKey(4) will return true if there is a value stored for the index 4
     // cache.get(4) will return the stored value for 4
     // cache.put(4,3) will store the value 3 for the index 4 in the cache
-    throw new UnsupportedOperationException();
+
+    if(cache.containsKey(i)){
+      return cache.get(i);
+    }
+    else if (i==0){
+      return 0;
+    }else if (i==1){
+      return 1;
+    }
+    else {
+      int answer = fib(i-1)+fib(i-2);
+      cache.put(i,answer);
+      return answer;
+    }
   }
 }

@@ -19,12 +19,33 @@ package uk.ac.cam.ys606.fibonacci;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import static com.google.common.truth.Truth.assertThat;
+
 
 @RunWith(JUnit4.class)
 public class FibonacciTableTest {
 
   @Test
-  public void fib_makesUseOfCache() {
+  public void fib_makesUseOfCache1() {
     // Hint: use CountingMap!
+    CountingMap countingMap= new CountingMap();
+    FibonacciTable fibonacciTable = new FibonacciTable(countingMap);
+    fibonacciTable.fib(5);
+
+    int count = countingMap.getCounter();
+    assertThat(count).isEqualTo(2);    //uses get on fib(2) and fib(3) recursively
+  }
+
+  @Test
+  public void fib_makesUseOfCache2() {
+    // Hint: use CountingMap!
+    CountingMap countingMap= new CountingMap();
+    FibonacciTable fibonacciTable = new FibonacciTable(countingMap);
+    fibonacciTable.fib(5);
+    fibonacciTable.fib(4);    //use get
+    fibonacciTable.fib(10);
+    fibonacciTable.fib(7);     //use get
+    int count = countingMap.getCounter();
+    assertThat(count).isEqualTo(10);    //uses get() to fetch RHS of recursive call tree calls
   }
 }
