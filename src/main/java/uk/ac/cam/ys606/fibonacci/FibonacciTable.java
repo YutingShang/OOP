@@ -59,6 +59,8 @@ class FibonacciTable {
       return 0;
     }else if (i==1){
       return 1;
+    }else if (i<0){
+      throw new IllegalArgumentException();
     }
     else {
       int answer = fib(i-1)+fib(i-2);
