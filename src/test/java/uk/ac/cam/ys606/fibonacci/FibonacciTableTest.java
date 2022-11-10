@@ -20,6 +20,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThrows;
 
 
 @RunWith(JUnit4.class)
@@ -47,5 +48,15 @@ public class FibonacciTableTest {
     fibonacciTable.fib(7);     //use get
     int count = countingMap.getCounter();
     assertThat(count).isEqualTo(10);    //uses get() to fetch RHS of recursive call tree calls
+  }
+
+  @Test
+  public void fib_illegalArgument(){
+    // ARRANGE
+    FibonacciTable fibonacci = new FibonacciTable();
+
+    // ACT
+    // ASSERT
+    assertThrows(IllegalArgumentException.class, () -> fibonacci.fib(-1));
   }
 }
