@@ -47,4 +47,16 @@ public class FibonacciTest {
     // ASSERT
     assertThrows(IllegalArgumentException.class, () -> fibonacci.fib(-1));
   }
+
+  @Test
+  public void fib_returnsOtherFibNumbers(){
+    // ARRANGE
+    Fibonacci fibonacci = new Fibonacci();
+
+    // ACT
+    int result = fibonacci.fib(7);
+    // ASSERT
+    assertThrows(IllegalArgumentException.class, () -> fibonacci.fib(-1));
+    assertThat(result).isEqualTo(13);
+  }
 }
